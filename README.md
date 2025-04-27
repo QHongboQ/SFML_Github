@@ -99,3 +99,25 @@ Here are some useful resources if you want to learn more about CMake:
 ## License
 
 The source code is dual licensed under Public Domain and MIT -- choose whichever you prefer.
+
+## Applying to VScode
+Please change the CMake file to below code:
+```
+cmake_minimum_required(VERSION 3.14)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+project(${PROJECT_NAME})
+
+include(FetchContent)
+FetchContent_Declare(
+        malena
+        GIT_REPOSITORY ${Github URL}
+        GIT_TAG v0.2.4
+)
+FetchContent_MakeAvailable(malena)
+
+add_executable(${PROJECT_NAME}
+        src/main.cpp
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Malena::Malena)
+```
